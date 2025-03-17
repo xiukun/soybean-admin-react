@@ -28,25 +28,24 @@ const ThemeProvider: FC<PropsWithChildren> = ({ children }) => {
 
   useEffect(() => {
     toggleCssDarkMode(darkMode);
-    localStg.set('darkMode', darkMode);
   }, [darkMode]);
 
-  useMount(() => {
+  useEffect(() => {
     const mediaQuery = window.matchMedia(DARK_MODE_MEDIA_QUERY);
-
     const handler = (event: MediaQueryListEvent) => {
       if (themeMode !== 'system') return;
       changeThemeMode(event.matches ? 'dark' : 'light');
     };
-
     return () => {
       // 在组件卸载时清理监听器
       mediaQuery.removeEventListener('change', handler);
     };
-  });
+  }, []);
 
   return (
-    <ThemeContext.Provider value={{ darkMode, setThemeScheme: changeThemeMode, themeScheme: themeMode, toggleThemeScheme }}>
+    <ThemeContext.Provider
+      value={{ darkMode, setThemeScheme: changeThemeMode, themeScheme: themeMode, toggleThemeScheme }}
+    >
       {children}
     </ThemeContext.Provider>
   );

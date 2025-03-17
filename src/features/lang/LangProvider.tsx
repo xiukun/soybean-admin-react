@@ -27,7 +27,7 @@ const LangProvider: FC<PropsWithChildren> = ({ children }) => {
     localStg.set('lang', lang);
   }
 
-  return <LangContext value={{ locale, localeOptions, setLocale: changeLocale }}>{children}</LangContext>;
+  return <LangContext.Provider value={{ locale, localeOptions, setLocale: changeLocale }}>{children}</LangContext.Provider>;
 };
 
 export default LangProvider;

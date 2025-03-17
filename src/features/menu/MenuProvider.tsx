@@ -53,7 +53,7 @@ const MenuProvider: FC<PropsWithChildren> = ({ children }) => {
     setActiveFirstLevelMenuKey: changeActiveFirstLevelMenuKey
   };
 
-  return <MixMenuContext value={mixMenuContext}>{children}</MixMenuContext>;
+  return <MixMenuContext.Provider value={mixMenuContext}>{children}</MixMenuContext.Provider>;
 };
 
 export default MenuProvider;
