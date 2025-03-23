@@ -1,7 +1,9 @@
-import LookForward from '@/components/LookForward';
+import { AmisRenderer } from '@sa/amis-renderer';
 
-const SecondChildHome = () => {
-  return <LookForward />;
+import schemaData from './schema.json';
+
+const SecondChild = () => {
+  return <AmisRenderer schema={schemaData} />;
 };
 
-export default SecondChildHome;
+export default SecondChild;

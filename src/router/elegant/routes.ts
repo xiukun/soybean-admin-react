@@ -250,7 +250,8 @@ export const generatedRoutes: ElegantConstRoute[] = [
                     handle: {
                       constant: true,
                       i18nKey: 'route.(base)_multi-menu_first_child',
-                      title: 'multi-menu_first_child'
+                      title: 'multi-menu_first_child',
+                      keepAlive: true
                     }
                   }
                 ]
@@ -276,7 +277,8 @@ export const generatedRoutes: ElegantConstRoute[] = [
                         path: '/multi-menu/second/child/home',
                         handle: {
                           i18nKey: 'route.(base)_multi-menu_second_child_home',
-                          title: '(base)_multi-menu_second_child_home'
+                          title: '(base)_multi-menu_second_child_home',
+                          keepAlive: true
                         }
                       }
                     ]

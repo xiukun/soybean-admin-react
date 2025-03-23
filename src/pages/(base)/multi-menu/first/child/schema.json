@@ -1,0 +1,289 @@
+{
+  "type": "page",
+  "body": [
+    {
+      "type": "crud",
+      "syncLocation": false,
+      "api": {
+        "method": "get",
+        "url": "https://m1.apifoxmock.com/m1/3546534-2258203-default/common/list",
+        "requestAdaptor": "",
+        "adaptor": "",
+        "messages": {}
+      },
+      "bulkActions": [],
+      "itemActions": [],
+      "filterSettingSource": [
+        "name",
+        "age",
+        "date",
+        "id",
+        "address",
+        "enable",
+        "image",
+        "imageList",
+        "imgsList",
+        "shipType",
+        "rating"
+      ],
+      "filterEnabledList": [
+        {
+          "label": "name",
+          "value": "name"
+        },
+        {
+          "label": "age",
+          "value": "age"
+        }
+      ],
+      "id": "u:376e4a8cac83",
+      "filter": {
+        "title": "",
+        "columnCount": 3,
+        "mode": "horizontal",
+        "body": [
+          {
+            "type": "input-text",
+            "label": "name",
+            "name": "name",
+            "id": "u:7edf25e75177"
+          },
+          {
+            "type": "input-text",
+            "label": "age",
+            "name": "age",
+            "id": "u:e2735c2d87f1"
+          }
+        ],
+        "actions": [
+          {
+            "type": "submit",
+            "label": "查询",
+            "primary": true,
+            "id": "u:0bcb3f642ddf"
+          },
+          {
+            "type": "reset",
+            "label": "重置",
+            "id": "u:6b371b652805"
+          },
+          {
+            "type": "button",
+            "label": "全部导出",
+            "onEvent": {
+              "click": {
+                "actions": [
+                  {
+                    "ignoreError": false,
+                    "actionType": "download",
+                    "api": {
+                      "url": "/system/ExcelExport/exportCsv",
+                      "method": "post",
+                      "requestAdaptor": "",
+                      "adaptor": "",
+                      "messages": {},
+                      "data": {
+                        "&": "$$",
+                        "perPage": 30000,
+                        "page": 1,
+                        "headerInfo": "${getExportColumnsConfig({\nkey:'17291233',\nsourceUrl:'https://m1.apifoxmock.com/m1/3546534-2258203-default/common/list'\n})}"
+                      },
+                      "responseType": "blob"
+                    }
+                  }
+                ]
+              }
+            },
+            "id": "u:bdc80af0f5f3"
+          },
+          {
+            "type": "button",
+            "label": "清空动态列",
+            "onEvent": {
+              "click": {
+                "actions": [
+                  {
+                    "ignoreError": false,
+                    "script": "// 清空动态列（接口+浏览器缓存），第三个参数为true，则清空\nwindow.__JSFunc.dynimicColumnSave(context, event, true)",
+                    "actionType": "custom"
+                  }
+                ]
+              }
+            },
+            "visibleOn": "${dynimicColumnKey}",
+            "id": "u:eb08b5e43317"
+          }
+        ],
+        "bodyClassName": "ag-bg-light antd-Panel-body",
+        "actionsClassName": "ag-bg-light-important antd-Panel-btnToolbar antd-Panel-footer",
+        "id": "u:4ea2a1a17462",
+        "feat": "Insert"
+      },
+      "onEvent": {
+        "fetchInited": {
+          "weight": 0,
+          "actions": [
+            {
+              "ignoreError": false,
+              "script": "// 动态列浏览器缓存 导出用\nwindow.__JSFunc.dynimicColumnCache(context, event);",
+              "actionType": "custom"
+            }
+          ]
+        }
+      },
+      "headerToolbar": [
+        {
+          "label": "添加",
+          "type": "button",
+          "actionType": "dialog",
+          "level": "primary",
+          "editorSetting": {
+            "behavior": "create"
+          },
+          "dialog": {
+            "title": "添加",
+            "body": {
+              "type": "form",
+              "api": {
+                "method": "post",
+                "url": "https://m1.apifoxmock.com/m1/3546534-2258203-default/common/save",
+                "requestAdaptor": "",
+                "adaptor": "",
+                "messages": {}
+              },
+              "body": [
+                {
+                  "type": "input-text",
+                  "name": "name",
+                  "label": "name"
+                },
+                {
+                  "type": "input-text",
+                  "name": "age",
+                  "label": "age"
+                },
+                {
+                  "type": "input-text",
+                  "name": "date",
+                  "label": "date"
+                },
+                {
+                  "type": "input-text",
+                  "name": "id",
+                  "label": "id"
+                },
+                {
+                  "type": "input-text",
+                  "name": "address",
+                  "label": "address"
+                },
+                {
+                  "type": "input-text",
+                  "name": "enable",
+                  "label": "enable"
+                },
+                {
+                  "type": "input-text",
+                  "name": "image",
+                  "label": "image"
+                },
+                {
+                  "type": "input-text",
+                  "name": "rating",
+                  "label": "rating"
+                }
+              ]
+            }
+          },
+          "id": "u:fa462a36bb79"
+        },
+        "bulkActions",
+        {
+          "type": "columns-toggler",
+          "align": "right",
+          "draggable": true
+        }
+      ],
+      "footerToolbar": [
+        {
+          "type": "statistics"
+        },
+        {
+          "type": "pagination",
+          "align": "right",
+          "behavior": "Pagination",
+          "layout": ["perPage", "pager"],
+          "perPage": 10
+        }
+      ],
+      "autoFillHeight": true,
+      "rowClassNameExpr": "${index % 2 ? 'bg-gray-100' : ''}",
+      "perPageAvailable": [10, 20, 50, 100, 200],
+      "dynimicColumnKey": "17291233",
+      "columns": [
+        {
+          "label": "name",
+          "type": "text",
+          "name": "name",
+          "sortable": true,
+          "id": "u:a7c61bbd66db"
+        },
+        {
+          "label": "age",
+          "type": "text",
+          "name": "age",
+          "sortable": true,
+          "id": "u:7a428a51800e"
+        },
+        {
+          "label": "date",
+          "type": "text",
+          "name": "date",
+          "sortable": true,
+          "id": "u:e567413b642b"
+        },
+        {
+          "label": "id",
+          "type": "text",
+          "name": "id",
+          "sortable": true,
+          "id": "u:611393863a4a"
+        },
+        {
+          "label": "address",
+          "type": "text",
+          "name": "address",
+          "sortable": true,
+          "id": "u:540470545c0b"
+        },
+        {
+          "label": "enable",
+          "type": "text",
+          "name": "enable",
+          "sortable": true,
+          "id": "u:7cce94bae654"
+        },
+        {
+          "label": "image",
+          "type": "text",
+          "name": "image",
+          "sortable": true,
+          "id": "u:e8ff1ee130ca"
+        },
+        {
+          "label": "rating",
+          "type": "text",
+          "name": "rating",
+          "sortable": true,
+          "id": "u:4da4c0ff63d7"
+        }
+      ],
+      "messages": {}
+    }
+  ],
+  "regions": ["body"],
+  "id": "u:5092f91bc35d",
+  "pullRefresh": {
+    "disabled": true
+  }
+}
