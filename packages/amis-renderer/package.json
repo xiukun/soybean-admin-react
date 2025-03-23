@@ -1,0 +1,27 @@
+{
+  "name": "@sa/amis-renderer",
+  "version": "1.2.0",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "typesVersions": {
+    "*": {
+      "*": ["./src/*"]
+    }
+  },
+  "dependencies": {
+    "@ag-neptune/bu-ui": "^0.3.4",
+    "@fortawesome/fontawesome-free": "^6.7.2",
+    "@sa/color": "*",
+    "amis": "6.11.0",
+    "amis-core": "6.11.0",
+    "amis-formula": "6.11.0",
+    "colord": "2.9.3",
+    "i18n-runtime": "^1.0.10",
+    "mobx": "4",
+    "mobx-state-tree": "3"
+  },
+  "devDependencies": {
+    "zustand": "^5.0.3"
+  }
+}
