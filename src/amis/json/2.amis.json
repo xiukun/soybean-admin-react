@@ -1,0 +1,313 @@
+{
+  "type": "page",
+  "body": [
+    {
+      "type": "crud",
+      "syncLocation": false,
+      "api": {
+        "method": "post",
+        "url": "https://apifoxmock.com/m1/3546534-2258203-default/common/dynamicColumns",
+        "requestAdaptor": "",
+        "adaptor": "",
+        "messages": {}
+      },
+      "bulkActions": [
+        {
+          "type": "button",
+          "level": "danger",
+          "label": "批量删除",
+          "actionType": "ajax",
+          "confirmText": "确定要删除？",
+          "api": {
+            "method": "post",
+            "url": "https://apifoxmock.com/m1/3546534-2258203-default/common/deleteBatch",
+            "data": {
+              "ids": "${JOIN(selectedIds,',')}"
+            }
+          },
+          "editorSetting": {
+            "behavior": "bulkDelete"
+          },
+          "id": "u:c0c59ed698b0",
+          "wrapperCustomStyle": {
+            "position": "absolute",
+            "visibility": "hidden"
+          }
+        }
+      ],
+      "itemActions": [],
+      "filterSettingSource": ["engine", "browser", "platform", "version", "grade", "id"],
+      "filterEnabledList": [
+        {
+          "label": "id",
+          "value": "id"
+        }
+      ],
+      "filter": {
+        "title": "",
+        "columnCount": 3,
+        "mode": "horizontal",
+        "body": [
+          {
+            "type": "input-text",
+            "label": "idw",
+            "name": "id",
+            "id": "u:8c0049e3c4df"
+          }
+        ],
+        "actions": [
+          {
+            "type": "submit",
+            "label": "查询",
+            "primary": true,
+            "id": "u:bf5a2dd1ef32"
+          },
+          {
+            "type": "reset",
+            "label": "重置",
+            "id": "u:16d5ba546c61"
+          },
+          {
+            "type": "button",
+            "label": "全部导出",
+            "onEvent": {
+              "click": {
+                "actions": [
+                  {
+                    "ignoreError": false,
+                    "actionType": "download",
+                    "api": {
+                      "url": "/system/ExcelExport/exportCsv",
+                      "method": "post",
+                      "requestAdaptor": "",
+                      "adaptor": "",
+                      "messages": {},
+                      "data": {
+                        "&": "$$",
+                        "perPage": 30000,
+                        "page": 1,
+                        "headerInfo": "${getExportColumnsConfig({\nkey:'78ede067',\nsourceUrl:'https://apifoxmock.com/m1/3546534-2258203-default/common/dynamicColumns'\n})}"
+                      },
+                      "responseType": "blob"
+                    }
+                  }
+                ]
+              }
+            },
+            "id": "u:73a95945aa81"
+          },
+          {
+            "type": "button",
+            "label": "清空动态列",
+            "onEvent": {
+              "click": {
+                "actions": [
+                  {
+                    "ignoreError": false,
+                    "script": "// 清空动态列（接口+浏览器缓存），第三个参数为true，则清空\nwindow.__JSFunc.dynimicColumnSave(context, event, true)",
+                    "actionType": "custom"
+                  }
+                ]
+              }
+            },
+            "visibleOn": "${dynimicColumnKey}",
+            "id": "u:635c299be318"
+          },
+          {
+            "type": "button",
+            "label": "批量按钮",
+            "onEvent": {
+              "click": {
+                "actions": [
+                  {
+                    "ignoreError": false,
+                    "actionType": "ajax",
+                    "outputVar": "responseResult",
+                    "options": {},
+                    "api": {
+                      "url": "/v2/user",
+                      "method": "post",
+                      "requestAdaptor": "",
+                      "adaptor": "",
+                      "messages": {},
+                      "data": {
+                        "ids": "${window:selectedIds}"
+                      },
+                      "sendOn": "${window:selectedIds!=''}"
+                    }
+                  }
+                ]
+              }
+            },
+            "id": "u:bd613dc9d247"
+          }
+        ],
+        "bodyClassName": "ag-bg-light antd-Panel-body",
+        "actionsClassName": "ag-bg-light-important antd-Panel-btnToolbar antd-Panel-footer",
+        "id": "u:a4ad4a73dcdb",
+        "feat": "Insert"
+      },
+      "onEvent": {
+        "fetchInited": {
+          "weight": 0,
+          "actions": [
+            {
+              "ignoreError": false,
+              "script": "// 动态列浏览器缓存 导出用\nwindow.__JSFunc.dynimicColumnCache(context, event);",
+              "actionType": "custom",
+              "description": "动态列浏览器缓存 导出用",
+              "args": {}
+            }
+          ]
+        },
+        "selectedChange": {
+          "weight": 0,
+          "actions": [
+            {
+              "componentId": "page_id",
+              "ignoreError": false,
+              "actionType": "setValue",
+              "args": {
+                "value": {
+                  "selectedItems": "${event.data.selectedItems}",
+                  "selectedIds": "${ARRAYMAP(event.data.selectedItems,item=>item.id)}"
+                }
+              },
+              "description": "批量勾选赋值，配合行选择使用"
+            },
+            {
+              "ignoreError": false,
+              "actionType": "custom",
+              "script": "window.selectedIds = event.data.selectedItems.map(item=>item.id)?.join(',');"
+            }
+          ]
+        },
+        "rowClick": {
+          "weight": 0,
+          "actions": [
+            {
+              "ignoreError": false,
+              "actionType": "custom",
+              "script": "\n     let pageId = 'page_id';\n     let tableId = 'crud_table_id';\n     let selectedIds = [];\n     const selectedItems = [...window.__JSFunc.getDataVar(event, pageId, \"selectedItems\")];\n     const objValue = event.data.item;\n     if(!selectedItems.find(item=>item.id==objValue.id)){\n       selectedItems.push(objValue);\n       selectedItems.forEach(i=>{\n         selectedIds.push(i.id);\n       })\n       window.selectedIds = selectedIds.join(',');\n       window.__JSFunc.setDataVar(event, pageId, {\n         selectedItems,\n         selectedIds\n       })\n       doAction([\n            {\"actionType\": \"setEventData\",\n              \"args\": {\n                \"key\": \"selected\",\n                \"value\": selectedIds\n              }\n            },\n            {\n              \"actionType\": \"select\",\n              \"componentId\": tableId,\n              \"args\": {\n                \"condition\": \"${ARRAYINCLUDES(selected, id)}\"\n              }\n            }\n      ]);\n     }\n      \n      ",
+              "args": {},
+              "description": "表格自定义选择逻辑"
+            }
+          ]
+        }
+      },
+      "id": "crud_table_id",
+      "messages": {},
+      "headerToolbar": [
+        {
+          "type": "bulk-actions",
+          "tpl": "操作栏"
+        },
+        {
+          "type": "columns-toggler",
+          "align": "right",
+          "draggable": true
+        },
+        {
+          "type": "button",
+          "tpl": "内容",
+          "wrapperComponent": "",
+          "id": "u:f38680225c05",
+          "label": "批量删除",
+          "onEvent": {
+            "click": {
+              "weight": 0,
+              "actions": [
+                {
+                  "ignoreError": false,
+                  "actionType": "ajax",
+                  "outputVar": "responseResult",
+                  "options": {},
+                  "api": {
+                    "url": "https://apifoxmock.com/m1/3546534-2258203-default/aaa",
+                    "method": "post",
+                    "requestAdaptor": "",
+                    "adaptor": "",
+                    "messages": {},
+                    "data": {
+                      "ids": "${JOIN(selectedIds,',')}"
+                    }
+                  }
+                }
+              ]
+            }
+          },
+          "visibleOn": "${COUNT(selectedIds)>0}"
+        }
+      ],
+      "footerToolbar": [
+        {
+          "type": "statistics"
+        },
+        {
+          "type": "pagination",
+          "align": "right",
+          "behavior": "Pagination",
+          "layout": ["perPage", "pager"],
+          "perPage": 10
+        }
+      ],
+      "autoFillHeight": true,
+      "rowClassNameExpr": "${index % 2 ? 'bg-gray-100' : ''}",
+      "perPageAvailable": [10, 20, 50, 100, 200],
+      "dynimicColumnKey": "78ede067",
+      "columns": [
+        {
+          "label": "engine",
+          "type": "text",
+          "name": "engine",
+          "sortable": true,
+          "id": "u:a44c503fc3f2"
+        },
+        {
+          "label": "browser",
+          "type": "text",
+          "name": "browser",
+          "sortable": true,
+          "id": "u:88067fd84bdd"
+        },
+        {
+          "label": "platform",
+          "type": "text",
+          "name": "platform",
+          "sortable": true,
+          "id": "u:5931d222d983"
+        },
+        {
+          "label": "version",
+          "type": "text",
+          "name": "version",
+          "sortable": true,
+          "id": "u:d4dce63c4337"
+        },
+        {
+          "label": "grade",
+          "type": "text",
+          "name": "grade",
+          "sortable": true,
+          "id": "u:191b07f588b5"
+        },
+        {
+          "label": "id",
+          "type": "text",
+          "name": "id",
+          "sortable": true,
+          "id": "u:6a506d0c1d60"
+        }
+      ]
+    }
+  ],
+  "regions": ["body"],
+  "id": "page_id",
+  "pullRefresh": {
+    "disabled": true
+  },
+  "data": {
+    "selectedItems": "${[]}",
+    "selectedIds": "${[]}"
+  }
+}
