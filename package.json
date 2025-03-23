@@ -6,9 +6,9 @@
   "packageManager": "pnpm@10.4.1",
   "description": "A fresh and elegant admin template, based on React18、Vite5、TypeScript、Ant Design and UnoCSS. 一个基于React18、Vite5、TypeScript、Ant Design and UnoCSS的清新优雅的中后台模版。",
   "author": {
-    "name": "Ohh",
-    "email": "1509326266@qq.com",
-    "url": "https://github.com/mufeng889"
+    "name": "mickey",
+    "email": "411560201@qq.com",
+    "url": "https://github.com/xiukun"
   },
   "license": "MIT",
   "homepage": "https://github.com/soybeanjs/soybean-admin-react",

@@ -57,7 +57,7 @@ function AntdConfig({ children }: PropsWithChildren) {
     >
       <AWatermark
         className="h-full"
-        content={watermarkVisible ? watermarkText || 'Soybean' : ''}
+        content={watermarkVisible ? watermarkText || '411560201@qq.com' : ''}
         {...WATERMARK_CONFIG}
       >
         {children}

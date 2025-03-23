@@ -9,7 +9,7 @@ export const themeSettings: App.Theme.ThemeSetting = settingsSchema as any;
  */
 export const overrideThemeSettings: Partial<App.Theme.ThemeSetting> = {
   watermark: {
-    text: 'SoybeanAdmin',
+    text: 'LowCodePlatform',
     visible: false
   }
 };
