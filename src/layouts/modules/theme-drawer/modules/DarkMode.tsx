@@ -5,7 +5,8 @@ import {
   getThemeSettings,
   setColourWeakness,
   setGrayscale,
-  setIsOnlyExpandCurrentParentMenu
+  setIsOnlyExpandCurrentParentMenu,
+  setSiderInverted
 } from '@/features/theme';
 
 import SettingItem from '../components/SettingItem';
@@ -20,6 +21,9 @@ const DarkMode = () => {
   function handleGrayscaleChange(value: boolean) {
     dispatch(setGrayscale(value));
   }
+  function handleSiderInvertedChange(value: boolean) {
+    dispatch(setSiderInverted(value));
+  }
 
   function handleAuxiliaryColorChange(value: boolean) {
     dispatch(setColourWeakness(value));
@@ -33,6 +37,12 @@ const DarkMode = () => {
       <div className="i-flex-center">
         <ThemeSchemaSegmented />
       </div>
+      <SettingItem label={t('theme.sider.inverted')}>
+        <Switch
+          defaultChecked={themeSettings.sider.inverted}
+          onChange={handleSiderInvertedChange}
+        />
+      </SettingItem>
 
       <SettingItem label={t('theme.grayscale')}>
         <Switch
