@@ -1,0 +1,180 @@
+:root,
+.AMISCSSWrapper {
+  // --Page-aside-width: #{px2rem(224px)} !important;
+  --TableCell-paddingY: calc((var(--TableCell-height) - var(--Table-fontSize) * var(--Table-lineHeight)) / 2.5);
+}
+
+.ag-bg-light-important {
+  background-color: #fcfcfd !important;
+}
+.ag-bg-light {
+  background-color: #fcfcfd;
+}
+
+.clearfix::after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+.crud-hidden-headerTool {
+  .antd-Table-headToolbar {
+    display: none !important;
+  }
+}
+.crud-hidden-footerTool {
+  .antd-Table-footToolbar {
+    display: none !important;
+  }
+}
+
+.antd-Form--inline.amis-form-search-box {
+  overflow: hidden;
+  padding: 0.5rem;
+  padding-bottom: 0;
+  padding-right: 0;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 0.25rem;
+  border-color: var(--Panel-right-border-color);
+  background-color: #f8f9fa;
+  .antd-Form-item {
+    margin-bottom: 0.5rem;
+  }
+}
+
+.antd-Form--horizontal.amis-form-search-box,
+.antd-Form--normal.amis-form-search-box,
+.antd-Form--flex.amis-form-search-box {
+  padding: 0.5rem;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 0.25rem;
+  border-color: var(--Panel-right-border-color);
+  background-color: #f8f9fa;
+}
+
+.amis-crud-table-display-row td {
+  .antd-PlainField,
+  .antd-TplField,
+  .antd-DateField,
+  .antd-StatusField,
+  .antd-MappingField {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    overflow: hidden;
+  }
+}
+
+.antd-Crud2-filter .antd-Form > .antd-Form-item {
+  margin-bottom: 0.75rem;
+  .antd-Form-feedback {
+    height: 0;
+    display: none;
+  }
+}
+.antd-Crud2-filter .antd-Form-group {
+  margin-bottom: 0.75rem !important;
+}
+.antd-Crud2-filter .antd-Form-group > .antd-Form-groupColumn > .antd-Form-item {
+  .antd-Form-feedback {
+    height: 0;
+    display: none;
+  }
+}
+.antd-Crud-filter > .antd-Panel-body {
+  padding-bottom: 2px;
+}
+.antd-Crud-filter > .antd-Panel-body-pb-3 {
+  padding-bottom: 12px !important;
+}
+.antd-Crud-filter .antd-Form > .antd-Form-item,
+.antd-Crud-filter .antd-Form-group > .antd-Form-item {
+  margin-bottom: 0.75rem;
+  .antd-Form-feedback {
+    height: 0;
+    display: none;
+  }
+}
+
+.antd-Crud-filter .antd-Form-group {
+  margin-bottom: 0.75rem !important;
+}
+.antd-Crud-filter .antd-Form-group > .antd-Form-groupColumn > .antd-Form-item {
+  .antd-Form-feedback {
+    height: 0;
+    display: none;
+  }
+}
+
+.antd-Crud2-filter > .antd-Panel .antd-Panel-btnToolbar {
+  border-width: 0;
+}
+.antd-Crud-filter > .antd-Panel-footerWrap .antd-Panel-btnToolbar {
+  border-width: 0;
+}
+// modal 弹出框 header样式调整
+.antd-Modal-content {
+  padding-top: 1rem;
+  > .antd-Modal-header {
+    border-bottom: var(--Drawer-content-borderWidth) solid var(--Drawer-header-borderColor);
+    padding: 0.5rem 1rem;
+  }
+}
+
+.amis-scope .antd-TreeControl.WOSHISHUI > .antd-Tree {
+  /* max-height: var(--Tree-max-height); */
+  max-height: calc(100vh - 160px);
+  overflow: auto;
+}
+
+.amis-scope .antd-Table-toolbar {
+  padding: 6px 0;
+}
+
+.amis-scope .antd-Table-table > thead > tr > th .antd-TableCell--title {
+  font-weight: 500;
+}
+
+.amis-scope .antd-Crud-filter {
+  margin-bottom: 5px;
+}
+
+.amis-scope .ag-antd-Card-heading-mini .antd-Card-heading {
+  padding: 0.375rem var(--gap-md) 0;
+}
+
+.amis-scope .antd-Page-body {
+  padding: 10px;
+}
+
+.amis-antd-Form-item-mini .antd-Form-item,
+.amis-antd-Form-item-mini .antd-Form-group {
+  margin-bottom: 0.375rem;
+}
+
+.amis-crud-quick-edit-formula .antd-Table-table td > .antd-Form {
+  min-width: inherit;
+}
+.amis-crud-quick-edit-formula .antd-Table-table td > .antd-Form-item > .antd-Form-control {
+  min-width: inherit;
+}
+
+.amis-drawer-content-scroll {
+  .antd-Drawer-body {
+    overflow: hidden !important;
+  }
+}
+
+.antd-Pagination > li > a,
+.antd-Pagination > li > span {
+  height: auto;
+}
+
+.antd-TableCell-sortBtn--up > svg,
+.antd-TableCell-sortBtn--down > svg,
+.antd-TableCell-sortBtn--default > svg {
+  top: 0.3em;
+}
