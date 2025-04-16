@@ -1,4 +1,4 @@
-import type { RouteObject } from 'react-router-dom';
+import { type RouteObject, redirect } from 'react-router-dom';
 
 function convert(m: any) {
   const { default: Component } = m;
@@ -156,5 +156,65 @@ export const BaseChildrenRoutes = [
     },
     id: 'document',
     path: '/document'
+  },
+  {
+    handle: {
+      hideInMenu: true,
+      keepAlive: true,
+      multiTab: false,
+      order: 6,
+      title: 'amisTemplatePage'
+    },
+    id: 'amisTemplatePageId',
+    lazy: () => import('@/pages/amis-template-page').then(convert),
+    path: '/amis-template-page'
+  },
+  {
+    children: [
+      {
+        handle: {
+          icon: 'carbon:ibm-watsonx-code-assistant-for-z-refactor',
+          keepAlive: true,
+          title: 'amis示例1'
+        },
+        id: '(base)_lowcode_page_demo1',
+        lazy: () => import('@/pages/amis-template-page').then(convert),
+        path: '/lowcode-page/demo1'
+      },
+      {
+        handle: {
+          icon: 'carbon:ibm-watsonx-code-assistant-for-z-validation-assistant',
+          keepAlive: true,
+          title: 'amis示例2'
+        },
+        id: '(base)_lowcode_page_demo2',
+        lazy: () => import('@/pages/amis-template-page').then(convert),
+        path: '/lowcode-page/demo2'
+      },
+      {
+        handle: {
+          icon: 'carbon:ibm-cloud-pak-netezza',
+          keepAlive: true,
+          title: 'amis示例3'
+        },
+        id: '(base)_lowcode_page_demo3',
+        lazy: () => import('@/pages/amis-template-page').then(convert),
+        path: '/lowcode-page/demo3'
+      }
+    ],
+    handle: {
+      icon: 'carbon:ibm-cloud-code-engine',
+      keepAlive: true,
+      order: 5,
+      title: '低代码模块'
+    },
+    id: '(base)_lowcodePage1',
+    loader: e => {
+      // redirect('/lowcode-page/demo1')
+      console.log('loader', e);
+      return '1111';
+      // return redirect('/lowcode-page/demo1');
+    },
+    path: '/lowcode-page'
   }
 ] satisfies RouteObject[];

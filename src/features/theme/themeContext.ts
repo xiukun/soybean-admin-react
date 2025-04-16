@@ -1,3 +1,4 @@
+import { toggleThemeMode } from '@sa/amis-renderer';
 import type { ThemeModeType } from 'ahooks/lib/useTheme';
 import { createContext } from 'react';
 
@@ -29,6 +30,9 @@ export const icons: Record<ThemeModeType, string> = {
  * @param darkMode Is dark mode
  */
 export function toggleCssDarkMode(darkMode = false) {
+  // 启用/禁用 amis css主题 并刷新amis页面才能正常显示主题
+  const val = darkMode ? 'dark' : 'light';
+  toggleThemeMode(val);
   const htmlElementClassList = document.documentElement.classList;
 
   if (darkMode) {

@@ -64,6 +64,7 @@ export const routeMap: RouteMap = {
  "403": "/403",
  "404": "/404",
  "500": "/500",
+ "amis-template-page": "/amis-template-page",
  "iframe-page": "/iframe-page",
  "root": "/"
 };

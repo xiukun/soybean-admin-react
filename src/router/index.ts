@@ -12,7 +12,6 @@ import { BaseChildrenRoutes } from './routes/builtin';
 function initRoutes() {
   // 获取所有文件夹生成的路由并转换成 react-router 路由
   const customRoutes = getReactRoutes(generatedRoutes);
-
   // 获取基础路由
   const baseRoute = customRoutes[0]?.children?.find(route => route.id === '(base)');
   // 添加自定义复用路由至基础路由

@@ -175,8 +175,12 @@ const env: RenderOptions = {
       };
     });
   },
-  notify: (type: 'error' | 'info' | 'success' | 'warning', msg: any, conf: any) =>
-    toast[type] ? toast[type](msg, conf) : console.warn('[Notify]', type, msg),
+  notify: (type: 'error' | 'info' | 'success' | 'warning', message: any) => {
+    (window as any).$message?.[type]({
+      content: message,
+      duration: 3
+    });
+  },
   replaceText: {
     AMIS_HOST: 'https://baidu.gitee.io/amis'
   },

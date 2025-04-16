@@ -55,6 +55,7 @@ export const pages: Record<string, () => Promise<any>> = {
 "404": () => import("@/pages/_builtin/404/index.tsx"),
 "500": () => import("@/pages/_builtin/500/index.tsx"),
 "iframe-page": () => import("@/pages/_builtin/iframe-page/index.tsx"),
+"amis-template-page": () => import("@/pages/amis-template-page/index.tsx"),
 "root": () => import("@/pages/index.tsx"),
 };
 

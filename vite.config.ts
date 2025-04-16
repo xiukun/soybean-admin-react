@@ -83,6 +83,15 @@ export default defineConfig(configEnv => {
     define: {
       BUILD_TIME: JSON.stringify(buildTime)
     },
+    optimizeDeps: {
+      include: [
+        'amis-editor',
+        `monaco-editor/esm/vs/language/json/json.worker`,
+        `monaco-editor/esm/vs/language/css/css.worker`,
+        `monaco-editor/esm/vs/language/typescript/ts.worker`,
+        `monaco-editor/esm/vs/editor/editor.worker`
+      ]
+    },
     plugins: setupVitePlugins(viteEnv, buildTime),
     preview: {
       port: 9725

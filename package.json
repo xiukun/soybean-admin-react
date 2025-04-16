@@ -10,7 +10,7 @@
     "email": "411560201@qq.com",
     "url": "https://github.com/xiukun"
   },
-  "license": "MIT",
+  "license": "LGPL",
   "homepage": "https://github.com/soybeanjs/soybean-admin-react",
   "repository": {
     "url": "https://github.com/soybeanjs/soybean-admin-react.git"
@@ -70,6 +70,7 @@
     "i18next": "24.2.2",
     "keepalive-for-react": "4.0.0",
     "lodash-es": "4.17.21",
+    "monaco-editor": "0.30.1",
     "motion": "12.4.7",
     "nprogress": "0.2.0",
     "react": "~18.3.1",

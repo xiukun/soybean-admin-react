@@ -65,6 +65,7 @@ declare module "@soybean-react/vite-plugin-react-router" {
     "403": "/403";
     "404": "/404";
     "500": "/500";
+    "amis-template-page": "/amis-template-page";
     "iframe-page": "/iframe-page";
     "root": "/";
   };
@@ -114,6 +115,7 @@ declare module "@soybean-react/vite-plugin-react-router" {
     | "403"
     | "404"
     | "500"
+    | "amis-template-page"
     | "iframe-page"
     | "root"
   >;
@@ -174,6 +176,7 @@ declare module "@soybean-react/vite-plugin-react-router" {
     | "404"
     | "500"
     | "iframe-page"
+    | "amis-template-page"
     | "root"
     | "root"
     | "root"
