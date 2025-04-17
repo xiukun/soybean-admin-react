@@ -11,7 +11,7 @@ const AmisRenderer = ({ env, locals, props, schema }: any) => {
   return (
     <div
       id="mickey_amis_root_id"
-      style={{ position: 'relative' }}
+      style={{ position: 'relative', height:'inherit' }}
     >
       {render(
         schema,

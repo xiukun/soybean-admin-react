@@ -347,6 +347,12 @@ export const generatedRoutes: ElegantConstRoute[] = [
         name: '(blank)',
         children: [
           {
+            matchedFiles: [null, '/src/pages/(blank)/bigscreen/index.tsx', null, null],
+            name: '(blank)_bigscreen',
+            path: '/bigscreen',
+            handle: { i18nKey: 'route.(blank)_bigscreen', title: '(blank)_bigscreen' }
+          },
+          {
             matchedFiles: ['(blank)_login', '/src/pages/(blank)/login/index.tsx', null, null],
             name: '(blank)_login',
             path: '/login',

@@ -200,6 +200,21 @@ export const BaseChildrenRoutes = [
         id: '(base)_lowcode_page_demo3',
         lazy: () => import('@/pages/amis-template-page').then(convert),
         path: '/lowcode-page/demo3'
+      },
+      {
+        handle: {
+          icon: 'carbon:ibm-cloud-pak-netezza',
+          keepAlive: true,
+          title: 'amis大屏示例1'
+        },
+        id: '(blank)_lowcode_page_bigscreen_demo1',
+        loader: e => {
+
+          console.log('loader', e);
+          return redirect('/bigscreen');
+        },
+        lazy: () => import('@/pages/(blank)/bigscreen/index.tsx').then(convert),
+        path: '/lowcode-page/bigscreen'
       }
     ],
     handle: {

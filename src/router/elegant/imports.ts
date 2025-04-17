@@ -46,6 +46,7 @@ export const pages: Record<string, () => Promise<any>> = {
 "(base)_projects_[pid]": () => import("@/pages/(base)/projects/[pid]/index.tsx"),
 "(base)_projects": () => import("@/pages/(base)/projects/index.tsx"),
 "(base)_user-center": () => import("@/pages/(base)/user-center/index.tsx"),
+"(blank)_bigscreen": () => import("@/pages/(blank)/bigscreen/index.tsx"),
 "(blank)_login-out": () => import("@/pages/(blank)/login-out/index.tsx"),
 "(blank)_login_code-login": () => import("@/pages/(blank)/login/code-login/index.tsx"),
 "(blank)_login": () => import("@/pages/(blank)/login/index.tsx"),
