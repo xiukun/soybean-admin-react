@@ -20,6 +20,6 @@ export function toggleThemeMode(mode: 'dark' | 'light') {
       break;
     default:
       // eslint-disable-next-line no-console
-      console.warn(`Unknown theme: ${val}`);
+      console.warn(`Unknown theme: ${mode}`);
   }
 }

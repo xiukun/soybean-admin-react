@@ -1,8 +1,8 @@
 import type { AnyColor, HsvColor } from 'colord';
-import { colord } from 'colord';
-
+import { colord, extend } from 'colord';
+import mixPlugin from "colord/plugins/mix";
 import type { AmisColorIndex } from '../types/palette';
-
+extend([mixPlugin]);
 /** Hue step */
 const hueStep = 2;
 /** Saturation step, light color part */
